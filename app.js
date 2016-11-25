@@ -79,6 +79,8 @@ var board = {
   },
   renderGameOver: function(winner) {
     dashboard.innerHTML = "";
+    boardElement.innerHTML = "";
+    boardElement.style.border = "none";
     var output = "Game Over! ";
     if(winner) {
       output += winner === game.player1 ? 
@@ -88,7 +90,15 @@ var board = {
     } else {
       output += "It's a tie!";
     }
-    boardElement.innerHTML = output;
+    var outputElement = document.createElement('p');
+    var reload = document.createElement('a');
+    outputElement.className = 'game-over';
+    reload.className = 'reload';
+    boardElement.appendChild(outputElement);
+    outputElement.innerHTML = output;
+    boardElement.appendChild(reload);
+    reload.innerHTML = "Play Again";
+    reload.setAttribute('href', 'index.html');
   }
 } 
 
