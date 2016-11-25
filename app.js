@@ -69,9 +69,9 @@ var board = {
     return false;
   },
   hasSameSymbol: function(tripletArray, player) {
-    if(tripletArray[0] === player 
-      && tripletArray[1] === player
-      && tripletArray[2] === player) {
+    if(tripletArray.every(function(n) {
+      return tripletArray[n] === player;
+    }) {
       return true;
     } else {
       return false;
